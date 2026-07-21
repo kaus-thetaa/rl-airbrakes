@@ -1,7 +1,5 @@
-cat > requirements.txt << 'EOF'
 gymnasium
 stable-baselines3
 numpy
 matplotlib
-rocketpy
-EOF
+rocketpy    

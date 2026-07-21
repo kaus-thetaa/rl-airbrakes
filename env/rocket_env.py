@@ -93,8 +93,8 @@ class RocketEnv(gym.Env):
             self.apogee_altitude = self.altitude
 
         # episode ends on ground hit or timeout
-        terminated = self.altitude <= 0.0
-        truncated = self.steps >= self.max_steps
+        terminated = bool(self.altitude <= 0.0)
+        truncated = bool(self.steps >= self.max_steps)
 
         reward = self._get_reward(extension, terminated or truncated)
         self.prev_extension = extension

@@ -103,7 +103,7 @@ def evaluate(model, env, n_episodes=20):
 
 
 def main():
-    os.makedirs("results/models", "results/plots".split(",")[0], exist_ok=True)
+    os.makedirs("results/models", exist_ok=True)
     os.makedirs("results/plots", exist_ok=True)
 
     env = RocketEnv()
@@ -118,6 +118,7 @@ def main():
         "MlpPolicy",
         env,
         verbose=1,
+        device="cuda",
         learning_rate=3e-4,
         n_steps=2048,
         batch_size=64,
@@ -126,7 +127,6 @@ def main():
         gae_lambda=0.95,
         clip_range=0.2,
         policy_kwargs=dict(net_arch=[64, 64]),
-        tensorboard_log="results/tensorboard/"
     )
 
     logger = TrainingLogger()
